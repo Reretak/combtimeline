@@ -345,9 +345,6 @@ async function checkPw(pw, hashed){
     return false
   }
 }
-app.get("*splat", (req, res) => {
-  return res.json({ success: false, message: "How the hell did you get here?" });
-})
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));

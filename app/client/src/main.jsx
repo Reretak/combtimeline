@@ -29,7 +29,7 @@ const rootRoute = createRootRoute({
 
 const baseRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: '/timeline',
   component: function Index(){
     return (
       <>
@@ -41,7 +41,7 @@ const baseRoute = createRoute({
 })
 const timelineRoute = createRoute({
   getParentRoute: () => baseRoute,
-  path: 'time',
+  path: '/time',
   component: function Index() {
     return (
       <>
@@ -52,7 +52,7 @@ const timelineRoute = createRoute({
 })
 const AboutRoute = createRoute({
   getParentRoute: () => baseRoute,
-  path: 'about',
+  path: '/about',
   component: function Index() {
     return (
       <>
@@ -63,7 +63,7 @@ const AboutRoute = createRoute({
 })
 const WikiRoute = createRoute({
   getParentRoute: () => baseRoute,
-  path: 'wiki',
+  path: '/wiki',
   component: function Index() {
     return (
       <>

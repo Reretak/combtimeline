@@ -347,7 +347,7 @@ async function checkPw(pw, hashed){
 }
 app.use(express.static(path.join(__dirname,  'client', 'build')));
 app.get('/{*splat}', (req, res) => {
-  res.sendFile(path.join(__dirname,  'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname,  'client', 'dist', 'index.html'));
 });
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

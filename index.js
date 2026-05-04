@@ -345,7 +345,7 @@ async function checkPw(pw, hashed){
     return false
   }
 }
-app.use(express.static(path.join(__dirname,  'client', 'build')));
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 app.get('/{*splat}', (req, res) => {
   res.sendFile(path.join(__dirname, 'app', 'client', 'dist', 'index.html'));
 });

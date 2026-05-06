@@ -213,7 +213,7 @@ function TagDelete() {
 function PostTag() {
     async function posttaglogic(prevState, formData) {
         const post_id = formData.get("post_id");
-        const tag_id = formData.get("tag_id");
+        const tag_id = [formData.get("tag_id")];
 
         try {
             const response = await axios.post(

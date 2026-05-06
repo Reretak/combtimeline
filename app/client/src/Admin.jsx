@@ -67,18 +67,18 @@ function PostPut() {
         }
     }
 
-    const [state, formAction] = useActionState(postlogic, { success: false });
+    const [putstate, putformAction] = useActionState(postlogic, { success: false });
 
     return (
         <>
             <h1>PUT POST</h1>
-            <form action={formAction}>
+            <form action={putformAction}>
                 <input name="title" />
                 <textarea name="content" />
                 <input name="id" type="number"/>
                 <button type="submit">Update Post</button>
             </form>
-            <p>Success = {state.success.toString()}</p>
+            <p>Success = {putstate.success.toString()}</p>
         </>
     );
 }

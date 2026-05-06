@@ -154,7 +154,7 @@ function TagPut() {
 
         try {
             const response = await axios.put(
-                "https://timelineserver-production.up.railway.app/api/post/"+id,
+                "https://timelineserver-production.up.railway.app/api/tag/"+id,
                 {name},
                 { withCredentials: true }
             );
@@ -169,7 +169,7 @@ function TagPut() {
 
     return (
         <>
-            <h1>PUT POST</h1>
+            <h1>PUT TAG</h1>
             <form action={puttagformAction}>
                 <input name="name" />
                 <input name="id" type="number"/>
@@ -184,7 +184,7 @@ function TagDelete() {
         const id = formData.get("id")
         try {
             const response = await axios.delete(
-                "https://timelineserver-production.up.railway.app/api/post/"+id,
+                "https://timelineserver-production.up.railway.app/api/tag/"+id,
                 {},
                 { withCredentials: true }
             );

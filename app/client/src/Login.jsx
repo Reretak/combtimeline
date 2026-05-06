@@ -14,7 +14,7 @@ function Login(){
         try {
             // 3. Fix Axios: Move 'withCredentials' to the 3rd argument (config)
             const response = await axios.post(
-                "https://timelineserver-production.up.railway.app/login",
+                "https://timelineserver-production.up.railway.app/api/login",
                 {
                     name: name,
                     password: password,   

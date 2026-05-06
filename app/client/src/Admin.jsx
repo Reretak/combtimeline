@@ -7,6 +7,7 @@ function Admin(){
         <>
             <p>Welcome!</p>
             <Post />
+            <PostPut />
         </>
     )
 }
@@ -46,4 +47,40 @@ function Post() {
         </>
     );
 }
+
+function PostPut() {
+    async function postlogic(prevState, formData) {
+        const title = formData.get("title");
+        const content = formData.get("content");
+        const id = formData.get("id")
+
+        try {
+            const response = await axios.post(
+                "https://timelineserver-production.up.railway.app/api/post/"+id,
+                { title, content },
+                { withCredentials: true }
+            );
+            return { success: response.data.success };
+        } catch (error) {
+            console.error("Put post failed", error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    const [state, formAction] = useActionState(postlogic, { success: false });
+
+    return (
+        <>
+            <h1>PUT POST</h1>
+            <form action={formAction}>
+                <input name="title" />
+                <textarea name="content" />
+                <input name="id" type="number"/>
+                <button type="submit">Update Post</button>
+            </form>
+            <p>Success = {state.success.toString()}</p>
+        </>
+    );
+}
+
 export default Admin;

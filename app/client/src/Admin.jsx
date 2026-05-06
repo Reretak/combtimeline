@@ -103,12 +103,10 @@ function PostDelete() {
 
     return (
         <>
-            <h1>PUT POST</h1>
+            <h1>DELETE POST</h1>
             <form action={delformAction}>
-                <input name="title" />
-                <textarea name="content" />
                 <input name="id" type="number"/>
-                <button type="submit">Update Post</button>
+                <button type="submit">Delete Post</button>
             </form>
             <p>Success = {delstate.success.toString()}</p>
         </>

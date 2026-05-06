@@ -21,7 +21,7 @@ function Post() {
 
         try {
             const response = await axios.post(
-                "https://timelineserver-production.up.railway.app/post",
+                "https://timelineserver-production.up.railway.app/api/post",
                 { title, content },
                 { withCredentials: true }
             );

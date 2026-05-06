@@ -27,12 +27,12 @@ function Login(){
             // ye sthe data is needed idk why the response has data in it but Ig the AI is right
             if(response.data.success){
                 navigate({ 
-                    to: '/timeline/admin/'
+                    to: '/admin/'
                 });
             }
             else{
                 navigate({ 
-                    to: '/timeline/'
+                    to: '/'
                 });
             }
             

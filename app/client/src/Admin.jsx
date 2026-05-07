@@ -213,7 +213,7 @@ function TagDelete() {
 function PostTag() {
     async function posttaglogic(prevState, formData) {
         const post_id = formData.get("post_id");
-        const tag_id = [formData.get("tag_id")];
+        const tag_id =  formData.get("tag_id");
 
         try {
             const response = await axios.post(
@@ -239,6 +239,39 @@ function PostTag() {
                 <button type="submit">Post post tag</button>
             </form>
             <p>Success = {posttagstate.success.toString()}</p>
+        </>
+    );
+}
+
+function DeletePostTag() {
+    async function deleteposttaglogic(prevState, formData) {
+        const post_id = formData.get("post_id");
+        const tag_id =  formData.get("tag_id");
+
+        try {
+            const response = await axios.delete(
+                "https://timelineserver-production.up.railway.app/api/post/"+post_id+"/tag",
+                { tag_id },
+                { withCredentials: true }
+            );
+            return { success: response.data.success };
+        } catch (error) {
+            console.error("Tag failed", error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    const [deleteposttagstate, deleteposttagformAction] = useActionState(deleteposttaglogic, { success: false });
+
+    return (
+        <>
+            <h1>DELETE POST TAG</h1>
+            <form action={deleteposttagformAction}>
+                <input name="post_id" type="number"/>
+                <input name="tag_id" type="number"/>
+                <button type="submit">Delete post tag</button>
+            </form>
+            <p>Success = {deleteposttagstate.success.toString()}</p>
         </>
     );
 }

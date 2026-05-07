@@ -294,12 +294,13 @@ app.post('/api/post/:id/tag', restrict, (req,res)=>{
 app.delete('/api/post/:id/tag/', restrict, (req,res)=>{
   try {
       const query = db.prepare("DELETE FROM PostsTags WHERE post_id = ? AND tag_id = ?")
-      const multiquery = db.transaction((tags) => {
+/*       const multiquery = db.transaction((tags) => {
         for (const t of tags){
           query.run(req.params.id,t)
         }
       })
-      multiquery(req.body.tag_id);
+      multiquery(req.body.tag_id); */
+      query.run(req.params.id,tags)
       return res.json({ success: true, message: "SUKSES!!!!" });
   } catch (error) {
     console.log(error)

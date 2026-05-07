@@ -278,13 +278,13 @@ app.put('/api/tag/:id',restrict,(req,res)=>{
 
 app.post('/api/post/:id/tag', restrict, (req,res)=>{
   try {
-      const query = db.prepare("INSERT INTO PostsTags (post_id, tag_id) VALUES (?,?)")
-      const multiquery = db.transaction((tags) => {
+      const query = db.prepare("INSERT INTO PostsTags (post_id, tag_id) VALUES (?,?)").run(req.params.id,req.body.tag_id);
+/*       const multiquery = db.transaction((tags) => {
         for (const t of tags){
           query.run(req.params.id,t)
         }
       })
-      multiquery(req.body.tag_id);
+      multiquery(req.body.tag_id); */
       return res.json({ success: true, message: "SUKSES!!!!" });
   } catch (error) {
     console.log(error)
@@ -293,14 +293,13 @@ app.post('/api/post/:id/tag', restrict, (req,res)=>{
 })
 app.delete('/api/post/:id/tag/', restrict, (req,res)=>{
   try {
-      const query = db.prepare("DELETE FROM PostsTags WHERE post_id = ? AND tag_id = ?")
+      const query = db.prepare("DELETE FROM PostsTags WHERE post_id = ? AND tag_id = ?").run(req.params.id,req.body.tag_id);
 /*       const multiquery = db.transaction((tags) => {
         for (const t of tags){
           query.run(req.params.id,t)
         }
       })
       multiquery(req.body.tag_id); */
-      query.run(req.params.id,req.body.tag_id)
       return res.json({ success: true, message: "SUKSES!!!!" });
   } catch (error) {
     console.log(error)

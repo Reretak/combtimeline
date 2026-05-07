@@ -300,7 +300,7 @@ app.delete('/api/post/:id/tag/', restrict, (req,res)=>{
         }
       })
       multiquery(req.body.tag_id); */
-      query.run(req.params.id,tags)
+      query.run(req.params.id,req.body.tag_id)
       return res.json({ success: true, message: "SUKSES!!!!" });
   } catch (error) {
     console.log(error)

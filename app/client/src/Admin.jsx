@@ -13,6 +13,7 @@ function Admin(){
             <TagPut />
             <TagDelete />
             <PostTag />
+            <DeletePostTag />
         </>
     )
 }
